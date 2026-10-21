@@ -1,0 +1,462 @@
+/* =========================================
+   Estilo visual do site
+========================================= */
+
+:root {
+    --fundo: #100d25;
+    --fundo-cartao: #1b1735;
+    --roxo: #9b83f6;
+    --roxo-claro: #d7caff;
+    --dourado: #f4d28b;
+    --texto: #f8f4ff;
+    --texto-suave: #c5bddc;
+    --borda: rgba(244, 210, 139, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    color: var(--texto);
+    background:
+        radial-gradient(ellipse at top, #302454 0%, transparent 55%),
+        linear-gradient(160deg, #100d25, #17112f 55%, #0b0a19);
+    font-family: "Poppins", sans-serif;
+    position: relative;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 80px 110px, #f4d28b, transparent),
+        radial-gradient(2px 2px at 160px 70px, #d7caff, transparent),
+        radial-gradient(1px 1px at 230px 150px, #fff, transparent);
+    background-size: 270px 190px;
+    animation: brilhar 5s ease-in-out infinite alternate;
+}
+
+@keyframes brilhar {
+    from { opacity: 0.2; }
+    to { opacity: 0.65; }
+}
+
+.topo,
+.container,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+.topo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    padding: 25px 15px 10px;
+}
+
+.topo p,
+footer p {
+    color: var(--texto-suave);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.simbolo {
+    color: var(--dourado);
+}
+
+.container {
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    padding: 35px 22px;
+}
+
+.tela {
+    display: none;
+    width: 100%;
+    text-align: center;
+    animation: aparecer 0.7s ease;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.icone-principal {
+    font-size: 65px;
+    margin: 5px auto 20px;
+    filter: drop-shadow(0 0 22px rgba(155, 131, 246, 0.5));
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.subtitulo {
+    color: var(--dourado);
+    font-size: 10px;
+    letter-spacing: 4px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+h1,
+h2 {
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+h1 {
+    font-size: clamp(30px, 7vw, 48px);
+}
+
+h1 span {
+    color: var(--dourado);
+    text-shadow: 0 0 25px rgba(244, 210, 139, 0.16);
+}
+
+h2 {
+    font-size: clamp(22px, 5vw, 30px);
+}
+
+.linha-dourada {
+    width: 85px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+    margin: 24px auto;
+}
+
+.descricao {
+    max-width: 470px;
+    margin: 0 auto 20px;
+    color: var(--texto-suave);
+    font-size: 14px;
+    line-height: 2;
+}
+
+.frase-destaque {
+    color: var(--roxo-claro);
+    font-size: 12px;
+    margin: 22px 0 28px;
+    letter-spacing: 1px;
+}
+
+.botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 360px;
+    min-height: 54px;
+    margin: 0 auto;
+    padding: 15px 18px;
+    border: 1px solid var(--dourado);
+    border-radius: 8px;
+    color: #21162b;
+    background: linear-gradient(120deg, #f4d28b, #e9bd70);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(244, 210, 139, 0.22);
+}
+
+.botao:focus-visible,
+.botao-secundario:focus-visible,
+input:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+.rodape-inicial {
+    margin-top: 25px;
+    color: #9589ba;
+    font-size: 11px;
+}
+
+.progresso-topo {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--dourado);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.barra {
+    height: 5px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #30294c;
+}
+
+.progresso {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--roxo), var(--dourado));
+    border-radius: inherit;
+    transition: width 0.5s ease;
+}
+
+.icone-enigma {
+    margin-bottom: 15px;
+    font-size: 43px;
+}
+
+#jogo h2 {
+    margin-bottom: 24px;
+}
+
+.cartao-pista {
+    position: relative;
+    padding: 30px 24px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(37, 30, 68, 0.94), rgba(23, 19, 45, 0.94));
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.cartao-pista p {
+    color: #eee7ff;
+    font-family: "Cinzel", serif;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.aspas {
+    display: block;
+    color: var(--dourado);
+    font-family: Georgia, serif;
+    font-size: 38px;
+    line-height: 1;
+    text-align: left;
+}
+
+.aspas.final {
+    text-align: right;
+}
+
+.instrucao {
+    margin: 25px 0 18px;
+    color: var(--texto-suave);
+    font-size: 12px;
+}
+
+#formResposta {
+    max-width: 420px;
+    margin: auto;
+    text-align: left;
+}
+
+#formResposta label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--dourado);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+#resposta {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #51456f;
+    border-radius: 8px;
+    color: white;
+    background: #17132d;
+    outline: none;
+    font-size: 14px;
+}
+
+#resposta:focus {
+    border-color: var(--dourado);
+}
+
+#resposta::placeholder {
+    color: #847a9e;
+}
+
+#formResposta .botao {
+    max-width: none;
+}
+
+.botao-secundario {
+    margin: 18px auto 0;
+    padding: 10px 15px;
+    border: 1px solid #594a80;
+    border-radius: 8px;
+    color: var(--roxo-claro);
+    background: transparent;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.mensagem,
+.dica {
+    max-width: 420px;
+    margin: 18px auto 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.mensagem.sucesso {
+    color: #c5f5d4;
+    background: rgba(50, 130, 90, 0.18);
+    border: 1px solid rgba(120, 220, 155, 0.25);
+}
+
+.mensagem.erro {
+    color: #ffd0d7;
+    background: rgba(180, 55, 85, 0.15);
+    border: 1px solid rgba(240, 120, 145, 0.2);
+}
+
+.dica {
+    color: var(--dourado);
+    background: rgba(244, 210, 139, 0.08);
+    border: 1px solid var(--borda);
+}
+
+.chaves-finais {
+    margin: 25px 0;
+    font-size: 27px;
+    letter-spacing: 8px;
+}
+
+.tesouro-icone {
+    font-size: 75px;
+}
+
+#tesouro .descricao {
+    margin-bottom: 30px;
+}
+
+.carta {
+    position: relative;
+    max-width: 540px;
+    margin: 30px auto 0;
+    padding: 32px 25px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: linear-gradient(150deg, #282044, #1b1731);
+    text-align: left;
+    animation: aparecer 0.8s ease;
+}
+
+.selo {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 35px;
+}
+
+.carta h2 {
+    color: var(--dourado);
+    text-align: center;
+    font-size: 24px;
+}
+
+.carta .subtitulo {
+    text-align: center;
+}
+
+.texto-carta-principal {
+    color: #eee7ff;
+    font-size: 14px;
+    line-height: 2.1;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.texto-carta {
+    color: #eee7ff;
+    font-size: 14px;
+    line-height: 2.1;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.assinatura {
+    margin-top: 25px;
+    color: var(--roxo-claro);
+    font-family: "Cinzel", serif;
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: right;
+}
+
+.decoracao-final {
+    margin-top: 22px;
+    color: var(--dourado);
+    text-align: center;
+    letter-spacing: 12px;
+}
+
+.rodape-final {
+    margin-top: 30px;
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+footer {
+    padding: 25px 12px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 10px;
+}
